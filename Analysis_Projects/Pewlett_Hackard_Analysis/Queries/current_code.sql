@@ -234,3 +234,19 @@ LEFT JOIN departments as d
 ON (de.dept_no=d.dept_no)
 WHERE de.to_date = ('9999-01-01')
 AND de.dept_no=('d007');
+
+--Sales and development skill drill 7_3_6 
+SELECT ri.emp_no,
+    ri.first_name,
+    ri.last_name,
+	d.dept_name
+INTO sales_development
+FROM retirement_info as ri
+LEFT JOIN dept_emp as de
+ON ri.emp_no = de.emp_no
+LEFT JOIN departments as d
+ON (de.dept_no=d.dept_no)
+WHERE de.to_date = ('9999-01-01')
+AND de.dept_no IN ('d007', 'd005')
+ORDER BY d.dept_name;
+
